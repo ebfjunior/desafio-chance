@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 
 import { fetchReports } from "../../actions/report_action";
 
+import ReportListItem from "./report_list_item";
+
 class ReportList extends Component {
   componentDidMount() {
     this.props.fetchReports();
@@ -11,10 +13,7 @@ class ReportList extends Component {
   renderReportLines() {
     return this.props.reports.map(report => {
       return (
-        <tr key={report.id}>
-          <td>{report.title}</td>
-          <td>{report.description}</td>
-        </tr>
+        <ReportListItem key={report.id} report={report}/>
       );
     });
   }

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 
+import Status from '../../business/status';
+import Category from '../../business/category';
+
 class ReportForm extends Component {
   constructor(props) {
     super(props);
@@ -53,10 +56,7 @@ class ReportForm extends Component {
           component={this.renderSelectField}
           className="col-xs-12 col-sm-6"
         >
-          <option value="S1lFOVbxpW">User interface</option>
-          <option value="B1-KdVWxpZ">Application behavior</option>
-          <option value="BkGKOEWg6W">Wrong content</option>
-          <option value="ry7YOEWe6-">Localization</option>
+          {Object.keys(Status).map((idx) => {return (<option key={idx} value={idx}>{Status[idx]}</option>)})}
         </Field>
 
         <Field
@@ -65,12 +65,7 @@ class ReportForm extends Component {
           component={this.renderSelectField}
           className="col-xs-12 col-sm-6"
         >
-          <option value="1">New</option>
-          <option value="2">Resolving</option>
-          <option value="3">Resolved</option>
-          <option value="4">With Errors</option>
-          <option value="5">Feedback</option>
-          <option value="6">Closed</option>
+          {Object.keys(Status).map((idx) => {return (<option key={idx} value={idx}>{Status[idx]}</option>)})}
         </Field>
 
         <div className="form-group col-xs-12">
