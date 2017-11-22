@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import Status from '../../business/status';
-import Category from '../../business/category';
+import { openDetailPanel } from "../../actions/app_action";
 
-const mapBadgeColors = {
-  '1' : 'green',
-  '2' : 'blue',
-  '3' : 'orange',
-  '4' : 'chance-red',
-  '5' : 'shadow-red'
-};
+import { mapBadgeColors } from "../../business/constants";
+import Status from "../../business/status";
+import Category from "../../business/category";
 
-export default (props) => {
-  return (<tr>
-          <td><span className={`badge ${mapBadgeColors[props.report.status]}`}>{Status[props.report.status]}</span></td>
-          <td>{props.report.title}</td>
-          <td>{Category[props.report.categoryId]}</td>
-          <td>{props.report.userId}</td>
-          <td>{props.report.createdAt}</td>
-        </tr>);
+class ReportListItem extends Component {
+  onTrClick(e) {
+    this.props.openDetailPanel(e.currentTarget.dataset.id);
+  }
+  render() {
+    const { props } = this;
+
+    return (
+      <tr data-id={props.report.id} onClick={this.onTrClick.bind(this)}>
+        <td>
+          <span className={`badge ${mapBadgeColors[props.report.status]}`}>
+            {Status[props.report.status]}
+          </span>
+        </td>
+        <td>{props.report.title}</td>
+        <td>{Category[props.report.categoryId]}</td>
+        <td>{props.report.userId}</td>
+        <td>{props.report.createdAt}</td>
+      </tr>
+    );
+  }
 }
+
+// function mapStateToProps({ reports }) {
+//   return { reports };
+// }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ openDetailPanel }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(ReportListItem);

@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 // import { withRouter } from 'react-router-dom'
 
-import { fetchReports } from '../../actions/report_action';
-import { closeReportPanel } from '../../actions/app_action';
+import { fetchReports } from "../../actions/report_action";
+import { closeReportPanel } from "../../actions/app_action";
 
 import ReportForm from "./report_form";
 import Report from "../../business/report";
@@ -20,13 +20,22 @@ class ReportNewPanel extends Component {
   }
   render() {
     return (
-      <div className={`container wrapper panel ${this.props.app.report_panel_active ? 'visible' : 'invisible'}`}>
+      <div
+        className={`container wrapper panel ${this.props.app.form_panel_active
+          ? "visible"
+          : "invisible"}`}
+      >
         <div className="row">
           <div className="col-xs-12 panel-header text-center">
             Create a Report
-            <a href="#" className="pull-left chance-red-text cancel-panel-link" onClick={this.props.closeReportPanel}>Cancel</a>
+            <a
+              href="#"
+              className="pull-left chance-red-text cancel-panel-link"
+              onClick={this.props.closeReportPanel}
+            >
+              Cancel
+            </a>
           </div>
-
         </div>
         <div className="row">
           <div className="col-xs-12">

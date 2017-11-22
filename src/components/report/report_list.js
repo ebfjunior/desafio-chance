@@ -11,17 +11,18 @@ class ReportList extends Component {
     this.props.fetchReports();
   }
   renderReportLines() {
-    return this.props.reports.map(report => {
-      return (
-        <ReportListItem key={report.id} report={report}/>
-      );
+    return Object.keys(this.props.reports).map(id => {
+      const report = this.props.reports[id];
+
+      return <ReportListItem key={report.id} report={report} />;
     });
   }
   render() {
-    if (!this.props.reports.length) return <div>Carregando...</div>;
+    if (!Object.keys(this.props.reports).length)
+      return <div>Carregando...</div>;
 
     return (
-      <table className="table col-xs-12">
+      <table className="table table-hover col-xs-12">
         <thead>
           <tr>
             <th>Status</th>
