@@ -82,6 +82,17 @@ export default class Report {
     return request;
   }
 
+  getComments() {
+    const url = `${ROOT_WS_URL}/report/${this.id}/comment`;
+    const request = axios.get(url, {
+      headers: {
+        Authorization: TOKEN
+      }
+    });
+
+    return request;
+  }
+
   static getAll() {
     const url = `${ROOT_WS_URL}/report`;
     const request = axios.get(url, {

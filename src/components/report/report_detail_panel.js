@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 
 import { closeDetailPanel } from "../../actions/app_action";
 import ReportDetailInfo from "./report_detail_info";
+import ReportDetailComments from "./report_detail_comments";
 
 class ReportDetailPanel extends Component {
   renderHeader() {
@@ -37,7 +38,7 @@ class ReportDetailPanel extends Component {
         {this.renderHeader.call(this)}
         <div className="row panel-content">
           <ReportDetailInfo />
-          <div className="col-xs-12 col-md-6 detail-comments" />
+          <ReportDetailComments />
         </div>
       </div>
     );
