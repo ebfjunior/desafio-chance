@@ -1,4 +1,8 @@
-import { FETCH_REPORTS, DESTROY_REPORT } from "../business/constants";
+import {
+  FETCH_REPORTS,
+  DESTROY_REPORT,
+  SAVE_REPORT
+} from "../business/constants";
 import _ from "lodash";
 
 export default function(state = {}, action) {
@@ -7,6 +11,8 @@ export default function(state = {}, action) {
       return _.mapKeys(action.payload.data, "id");
     case DESTROY_REPORT:
       return _.omit(state, action.payload);
+    case SAVE_REPORT:
+      return { ...state, [action.payload.data.id]: action.payload.data };
   }
   return state;
 }

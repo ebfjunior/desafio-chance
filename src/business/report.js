@@ -19,17 +19,7 @@ export default class Report {
   }
 
   save(callback) {
-    let request;
-
-    if (this.isNew()) {
-      request = this.insert();
-    } else {
-      request = this.update();
-    }
-
-    request.then(response => {
-      if (typeof callback === "function") callback();
-    });
+    return this.isNew() ? this.insert() : this.update();
   }
 
   insert() {

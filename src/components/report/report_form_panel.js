@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 // import { withRouter } from 'react-router-dom'
 
-import { fetchReports } from "../../actions/report_action";
+import { saveReport } from "../../actions/report_action";
 import { closeReportPanel, closeDetailPanel } from "../../actions/app_action";
 
 import ReportForm from "./report_form";
@@ -12,8 +12,7 @@ import Report from "../../business/report";
 class ReportFormPanel extends Component {
   submit(values) {
     const report = new Report(values);
-    report.save(() => {
-      this.props.fetchReports();
+    this.props.saveReport(report, () => {
       this.props.closeReportPanel();
       this.props.closeDetailPanel();
       // this.props.history.push("/");
@@ -54,7 +53,7 @@ function mapStateToProps({ reports, app }) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { fetchReports, closeReportPanel, closeDetailPanel },
+    { closeReportPanel, closeDetailPanel, saveReport },
     dispatch
   );
 }

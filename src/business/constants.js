@@ -2,6 +2,7 @@ export const ROOT_WS_URL = "http://localhost:8000";
 
 export const FETCH_REPORTS = "FETCH_REPORTS";
 export const DESTROY_REPORT = "DESTROY_REPORT";
+export const SAVE_REPORT = "SAVE_REPORT";
 
 export const OPEN_REPORT_PANEL = "OPEN_REPORT_PANEL";
 export const CLOSE_REPORT_PANEL = "CLOSE_REPORT_PANEL";
