@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Sidebar from "./report/sidebar";
 import ReportList from "./report/report_list";
-import ReportNewPanel from "./report/report_new_panel";
+import ReportFormPanel from "./report/report_form_panel";
 import ReportDetailPanel from "./report/report_detail_panel";
 import Overlay from "./report/overlay";
 
@@ -17,7 +17,7 @@ export default class ReportIndexPage extends Component {
             </div>
             <div className="col-xs-12 col-md-10 no-padding">
               <ReportList />
-              <ReportNewPanel />
+              <ReportFormPanel />
               <ReportDetailPanel />
             </div>
           </div>

@@ -4,17 +4,18 @@ import { bindActionCreators } from "redux";
 // import { withRouter } from 'react-router-dom'
 
 import { fetchReports } from "../../actions/report_action";
-import { closeReportPanel } from "../../actions/app_action";
+import { closeReportPanel, closeDetailPanel } from "../../actions/app_action";
 
 import ReportForm from "./report_form";
 import Report from "../../business/report";
 
-class ReportNewPanel extends Component {
+class ReportFormPanel extends Component {
   submit(values) {
     const report = new Report(values);
     report.save(() => {
       this.props.fetchReports();
       this.props.closeReportPanel();
+      this.props.closeDetailPanel();
       // this.props.history.push("/");
     });
   }
@@ -52,8 +53,11 @@ function mapStateToProps({ reports, app }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchReports, closeReportPanel }, dispatch);
+  return bindActionCreators(
+    { fetchReports, closeReportPanel, closeDetailPanel },
+    dispatch
+  );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReportNewPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(ReportFormPanel);
 // export default withRouter(connect(mapStateToProps)(ReportNewPanel));

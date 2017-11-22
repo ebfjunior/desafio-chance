@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+
+import { REPORT_PANEL_EDIT } from "../../business/constants";
 
 import Status from "../../business/status";
 import Category from "../../business/category";
@@ -42,6 +45,7 @@ class ReportForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
+        <Field name="id" component="hidden" />
         <Field
           name="title"
           label="Title"
@@ -104,4 +108,17 @@ class ReportForm extends Component {
   }
 }
 
-export default reduxForm({ form: "report" })(ReportForm);
+ReportForm = reduxForm({ form: "report", enableReinitialize: true })(
+  ReportForm
+);
+
+function mapStateToProps({ reports, app }) {
+  const report =
+    app.report_panel_type == REPORT_PANEL_EDIT
+      ? { ...reports[app.current_report_id] }
+      : {};
+
+  return { initialValues: report };
+}
+
+export default connect(mapStateToProps)(ReportForm);

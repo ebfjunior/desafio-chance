@@ -4,8 +4,9 @@ import { ROOT_WS_URL, TOKEN } from "./constants";
 
 export default class Report {
   constructor(values) {
-    const { title, categoryId, status, description, userId } = values;
+    const { id, title, categoryId, status, description, userId } = values;
 
+    this.id = id;
     this.title = title;
     this.categoryId = categoryId;
     this.status = status;
@@ -13,7 +14,25 @@ export default class Report {
     this.userId = userId;
   }
 
+  isNew() {
+    return !this.id;
+  }
+
   save(callback) {
+    let request;
+
+    if (this.isNew()) {
+      request = this.insert();
+    } else {
+      request = this.update();
+    }
+
+    request.then(response => {
+      if (typeof callback === "function") callback();
+    });
+  }
+
+  insert() {
     const { title, categoryId, status, description, userId } = this;
 
     const url = `${ROOT_WS_URL}/report`;
@@ -33,9 +52,44 @@ export default class Report {
       }
     );
 
-    request.then(response => {
-      if (typeof callback === "function") callback();
+    return request;
+  }
+
+  update() {
+    const { id, title, categoryId, status, description, userId } = this;
+
+    const url = `${ROOT_WS_URL}/report`;
+    const request = axios.put(
+      url,
+      {
+        id,
+        title,
+        status,
+        description,
+        userId,
+        categoryId
+      },
+      {
+        headers: {
+          Authorization: TOKEN
+        }
+      }
+    );
+
+    return request;
+  }
+
+  destroy() {
+    const { id, title, categoryId, status, description, userId } = this;
+
+    const url = `${ROOT_WS_URL}/report/${id}`;
+    const request = axios.delete(url, {
+      headers: {
+        Authorization: TOKEN
+      }
     });
+
+    return request;
   }
 
   static getAll() {

@@ -5,9 +5,10 @@ import {
   CLOSE_DETAIL_PANEL
 } from "../business/constants";
 
-export function openReportPanel() {
+export function openReportPanel(id = null) {
   return {
-    type: OPEN_REPORT_PANEL
+    type: OPEN_REPORT_PANEL,
+    payload: id
   };
 }
 

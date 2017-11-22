@@ -2,11 +2,29 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import {
+  openReportPanel,
+  closeReportPanel,
+  closeDetailPanel
+} from "../../actions/app_action";
+import { destroyReport } from "../../actions/report_action";
+import Report from "../../business/report";
+
 import { mapBadgeColors } from "../../business/constants";
 import Status from "../../business/status";
 import Category from "../../business/category";
 
 class ReportDetailInfo extends Component {
+  onEditClick(e) {
+    this.props.openReportPanel(e.currentTarget.dataset.id);
+  }
+  onDeleteClick(e) {
+    const report = new Report(this.props.reports[e.currentTarget.dataset.id]);
+    this.props.destroyReport(report, () => {
+      this.props.closeReportPanel();
+      this.props.closeDetailPanel();
+    });
+  }
   render() {
     const report = this.props.reports[this.props.app.current_report_id] || {};
 
@@ -38,13 +56,51 @@ class ReportDetailInfo extends Component {
               <div className="col-xs-12 legend">Assigned to</div>
             </div>
             <div className="row">
-              <div className="col-xs-12">{report.createdAt}</div>
+              <div className="col-xs-12">{report.userId}</div>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-xs-12 legend">Description</div>
           <p className="col-xs-12 text-justify">{report.description}</p>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-md-6">
+            <div className="row">
+              <div className="col-xs-12 legend">Created at</div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">{report.createdAt}</div>
+            </div>
+          </div>
+          <div className="col-xs-12 col-md-6">
+            <div className="row">
+              <div className="col-xs-12 legend">Assigned to</div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">{report.userId}</div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <a
+              href="#"
+              className="btn btn-primary"
+              data-id={report.id}
+              onClick={this.onEditClick.bind(this)}
+            >
+              EDIT
+            </a>
+            <a
+              href="#"
+              className="btn btn-danger"
+              data-id={report.id}
+              onClick={this.onDeleteClick.bind(this)}
+            >
+              DELETE
+            </a>
+          </div>
         </div>
       </div>
     );
@@ -56,7 +112,10 @@ function mapStateToProps({ reports, app }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ closeDetailPanel }, dispatch);
+  return bindActionCreators(
+    { openReportPanel, closeReportPanel, closeDetailPanel, destroyReport },
+    dispatch
+  );
 }
 
-export default connect(mapStateToProps)(ReportDetailInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(ReportDetailInfo);
