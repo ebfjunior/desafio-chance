@@ -7,17 +7,15 @@ import ReduxPromise from "redux-promise";
 
 import reducers from "./reducers/root";
 import ReportIndexPage from "./components/report_index_page";
-import ReportNewPage from "./components/report_new_page";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-ReactDOM.render(
+ReactDOM.render( 
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/report-new" component={ReportNewPage} />
-          <Route path="/report" component={ReportIndexPage} />>
+          <Route path="/report" component={ReportIndexPage} />
           <Route path="/" component={ReportIndexPage} />
         </Switch>
       </div>

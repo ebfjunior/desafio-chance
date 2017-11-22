@@ -24,8 +24,11 @@ class ReportList extends Component {
       <table className="table col-xs-12">
         <thead>
           <tr>
+            <th>Status</th>
             <th>Title</th>
-            <th>Description</th>
+            <th>Category</th>
+            <th>Assigned to</th>
+            <th>Created at</th>
           </tr>
         </thead>
         <tbody>{this.renderReportLines.call(this)}</tbody>

@@ -3,6 +3,5 @@ export default {
   '2' : 'Resolving',
   '3' : 'Resolved',
   '4' : 'With errors',
-  '5' : 'Feedback',
-  '6' : 'Closed',
+  '5' : 'Closed',
 }

@@ -23,7 +23,7 @@ class ReportForm extends Component {
   }
 
   renderSelectField(field) {
-    console.log(field);
+
     return (
       <div className={`form-group ${field.className}`}>
         <label htmlFor={field.input.name}>{field.label}</label>
@@ -56,7 +56,7 @@ class ReportForm extends Component {
           component={this.renderSelectField}
           className="col-xs-12 col-sm-6"
         >
-          {Object.keys(Status).map((idx) => {return (<option key={idx} value={idx}>{Status[idx]}</option>)})}
+          {Object.keys(Category).map((idx) => {return (<option key={idx} value={idx}>{Category[idx]}</option>)})}
         </Field>
 
         <Field

@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 
+import Sidebar from "./report/sidebar";
 import ReportList from "./report/report_list";
+import ReportNewPanel from "./report/report_new_panel";
+import Overlay from "./report/overlay";
 
 export default class ReportIndexPage extends Component {
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-xs-12 col-md-2">
-          </div>
-          <div className="col-xs-12 col-md-10">
-            <ReportList />
+      <div>
+        <div className="container-fluid wrapper index">
+          <div className="row">
+            <div className="col-xs-12 col-md-2 wrapper sidebar">
+              <Sidebar />
+            </div>
+            <div className="col-xs-12 col-md-10 no-padding">
+              <ReportList />
+              <ReportNewPanel />
+            </div>
           </div>
         </div>
+        <Overlay />
       </div>
     );
   }
