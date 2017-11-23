@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Sidebar from "./report/sidebar";
-import ReportList from "./report/report_list";
-import ReportFormPanel from "./report/report_form_panel";
-import ReportDetailPanel from "./report/report_detail_panel";
-import Overlay from "./report/overlay";
+import Sidebar from "../report/sidebar";
+import ReportList from "../report/report_list";
+import ReportFormPanel from "../report/report_form_panel";
+import ReportDetailPanel from "../report/report_detail_panel";
+import Overlay from "../report/overlay";
 
 export default class ReportIndexPage extends Component {
   render() {

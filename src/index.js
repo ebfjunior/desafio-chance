@@ -6,9 +6,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReduxPromise from "redux-promise";
 
 import reducers from "./reducers/root";
-import ReportIndexPage from "./components/report_index_page";
-import UserLoginPage from "./components/user_login_page";
-import UserRegisterPage from "./components/user_register_page";
+import ReportIndexPage from "./components/pages/report_index_page";
+import UserLoginPage from "./components/pages/user_login_page";
+import UserRegisterPage from "./components/pages/user_register_page";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 

@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 
-import LoginForm from "./user/login_form";
-import BrandLogo from "./user/brand_logo";
+import RegisterForm from "../user/register_form";
+import BrandLogo from "../user/brand_logo";
 
-import { loginUser } from "../actions/user_action";
+import { registerUser } from "../../actions/user_action";
 
-class UserLoginPage extends Component {
+class UserRegisterPage extends Component {
   onSubmit(values) {
-    this.props.loginUser(values, () => {
-      this.props.history.push("/");
+    this.props.registerUser(values, () => {
+      this.props.history.push("/login");
     });
   }
   render() {
@@ -23,10 +23,10 @@ class UserLoginPage extends Component {
             <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 panel-user-screen">
               <div className="row header-login-panel">
                 <div className="col-xs-12">
-                  <a href="" className="login-panel-button active">
+                  <a href="" className="login-panel-button inactive">
                     LOGIN
                   </a>
-                  <a href="" className="login-panel-button inactive">
+                  <a href="" className="login-panel-button active">
                     REGISTER
                   </a>
                 </div>
@@ -35,7 +35,7 @@ class UserLoginPage extends Component {
                 <div className="col-xs-12">
                   <div className="row">
                     <div className="col-xs-12">
-                      <LoginForm onSubmit={this.onSubmit.bind(this)} />
+                      <RegisterForm onSubmit={this.onSubmit.bind(this)} />
                     </div>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ class UserLoginPage extends Component {
 // }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ loginUser }, dispatch);
+  return bindActionCreators({ registerUser }, dispatch);
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(UserLoginPage));
+export default withRouter(connect(null, mapDispatchToProps)(UserRegisterPage));
