@@ -61,7 +61,6 @@
   bottom: 0;
   background: #ffffff;
   border-top: 3px solid $blue;
-  overflow-y: scroll;
 
   .panel-header {
     border-bottom: 1px solid $shade-90;
@@ -75,6 +74,7 @@
       height: 100%;
       border-right: 1px solid $shade-90;
       padding: 0 3%;
+      overflow-y: scroll;
 
       & > .row {
         padding-top: 30px;
@@ -122,4 +122,46 @@ a.cancel-panel-link {
     text-decoration: none;
     color: $shadow-red;
   }
+}
+
+.comment-list {
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 150px;
+
+  .comment-item {
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 10px;
+    font-size: 0.8em;
+
+    .comment-info {
+      color: $shade-60;
+      margin-top: 10px;
+    }
+  }
+}
+.new-comment {
+  position: absolute;
+  bottom: 40px;
+  height: 80px;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid $shade-90;
+  padding-top: 5px;
+
+  textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    height: 40px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.report-info-actions {
+  margin-bottom: 80px;
 }

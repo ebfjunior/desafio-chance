@@ -82,7 +82,7 @@ class ReportDetailInfo extends Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row report-info-actions">
           <div className="col-xs-12">
             <a
               href="#"
