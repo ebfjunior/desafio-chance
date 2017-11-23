@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import RegisterForm from "../user/register_form";
 import BrandLogo from "../user/brand_logo";
@@ -23,12 +23,12 @@ class UserRegisterPage extends Component {
             <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 panel-user-screen">
               <div className="row header-login-panel">
                 <div className="col-xs-12">
-                  <a href="" className="login-panel-button inactive">
+                  <Link to="/login" className="login-panel-button inactive">
                     LOGIN
-                  </a>
-                  <a href="" className="login-panel-button active">
+                  </Link>
+                  <Link to="/register" className="login-panel-button active">
                     REGISTER
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row form-login-panel">

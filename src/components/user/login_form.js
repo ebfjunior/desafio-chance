@@ -44,6 +44,7 @@ class LoginForm extends Component {
         <Field
           name="password"
           label="Password"
+          type="password"
           component={this.renderTextField}
           className="col-xs-12"
         />

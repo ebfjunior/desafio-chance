@@ -9,8 +9,12 @@ import ReportDetailPanel from "../report/report_detail_panel";
 import Overlay from "../report/overlay";
 
 class ReportIndexPage extends Component {
-  componentWillMount() {
-    if (!Object.keys(this.props.user).length) this.props.history.push("/login");
+  componentDidMount() {
+    setTimeout(() => {
+      if (!Object.keys(this.props.user).length)
+        this.props.history.push("/login");
+      console.log("foi");
+    }, 100);
   }
   render() {
     return (

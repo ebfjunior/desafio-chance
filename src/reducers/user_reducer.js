@@ -1,4 +1,5 @@
 import { REGISTER_USER, LOGIN_USER } from "../business/constants";
+
 import _ from "lodash";
 
 export default function(state = {}, action) {
