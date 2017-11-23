@@ -86,7 +86,7 @@ class ReportDetailInfo extends Component {
           <div className="col-xs-12">
             <a
               href="#"
-              className="btn btn-primary"
+              className="btn btn-primary btn-hollow blue-text"
               data-id={report.id}
               onClick={this.onEditClick.bind(this)}
             >
@@ -94,7 +94,7 @@ class ReportDetailInfo extends Component {
             </a>
             <a
               href="#"
-              className="btn btn-danger"
+              className="btn btn-chance-red btn-hollow chance-red-text"
               data-id={report.id}
               onClick={this.onDeleteClick.bind(this)}
             >
