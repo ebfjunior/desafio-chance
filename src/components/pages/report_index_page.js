@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import Sidebar from "../report/sidebar";
 import ReportList from "../report/report_list";
@@ -6,7 +8,10 @@ import ReportFormPanel from "../report/report_form_panel";
 import ReportDetailPanel from "../report/report_detail_panel";
 import Overlay from "../report/overlay";
 
-export default class ReportIndexPage extends Component {
+class ReportIndexPage extends Component {
+  componentWillMount() {
+    if (!Object.keys(this.props.user).length) this.props.history.push("/login");
+  }
   render() {
     return (
       <div>
@@ -27,3 +32,9 @@ export default class ReportIndexPage extends Component {
     );
   }
 }
+
+function mapStateToProps({ reports, user }) {
+  return { user };
+}
+
+export default connect(mapStateToProps)(ReportIndexPage);
