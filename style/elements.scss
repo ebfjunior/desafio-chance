@@ -1,0 +1,31 @@
+.btn {
+  border-radius: 20px;
+  letter-spacing: 1px;
+  padding: 6px 20px;
+}
+
+.btn.btn-primary {
+  @extend .blue;
+  border-color: $blue;
+}
+
+.btn.btn-chance-red {
+  @extend .chance-red;
+  border-color: $chance-red;
+}
+
+.btn.btn-white {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn.btn-hollow {
+  background: transparent;
+  border-width: 2px;
+  border-style: solid;
+}
+
+a.white-text:hover {
+  text-decoration: none;
+  color: $shade-94;
+}

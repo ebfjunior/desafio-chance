@@ -20,7 +20,7 @@ class ReportList extends Component {
   render() {
     if (!Object.keys(this.props.reports).length)
       return <div>Carregando...</div>;
-
+    console.log(this.props.user);
     return (
       <table className="table table-hover col-xs-12">
         <thead>
@@ -38,8 +38,8 @@ class ReportList extends Component {
   }
 }
 
-function mapStateToProps({ reports }) {
-  return { reports };
+function mapStateToProps({ reports, user }) {
+  return { reports, user };
 }
 
 function mapDispatchToProps(dispatch) {

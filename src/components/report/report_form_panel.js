@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-// import { withRouter } from 'react-router-dom'
 
 import { saveReport } from "../../actions/report_action";
 import { closeReportPanel, closeDetailPanel } from "../../actions/app_action";

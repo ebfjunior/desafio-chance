@@ -6,7 +6,6 @@ import { closeReportPanel } from "../../actions/app_action";
 
 class Overlay extends Component {
   onOverlayClick() {
-    console.log(this.props);
     this.props.closeReportPanel();
   }
   render() {

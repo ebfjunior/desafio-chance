@@ -1,25 +1,52 @@
-
-$shade-94: #F0F0F0;
-$shade-90: #E4E4E4;
-$shade-80: #CCCCCC;
+$shade-94: #f0f0f0;
+$shade-90: #e4e4e4;
+$shade-80: #cccccc;
 $shade-60: #999999;
 $shade-40: #666666;
-$shade-30: #4D4D4D;
+$shade-30: #4d4d4d;
 
 $shadow-red: #802424;
-$chance-red: #E64040;
-$orange: #FF7F00;
-$blue: #0084FF;
-$green: #04B97D;
+$chance-red: #e64040;
+$orange: #ff7f00;
+$blue: #0084ff;
+$green: #04b97d;
 
-.green{background-color: $green;}
-.blue{background-color: $blue}
-.orange{background-color: $orange}
-.chance-red{background-color: $chance-red}
-.shadow-red{background-color: $shadow-red}
+.green {
+  background-color: $green;
+}
+.blue {
+  background-color: $blue;
+}
+.orange {
+  background-color: $orange;
+}
+.chance-red {
+  background-color: $chance-red;
+}
+.shadow-red {
+  background-color: $shadow-red;
+}
 
-.green-text{color: $green;}
-.blue-text{color: $blue}
-.orange-text{color: $orange}
-.chance-red-text{color: $chance-red}
-.shadow-red-text{color: $shadow-red}
+.green-text {
+  color: $green;
+}
+.blue-text {
+  color: $blue;
+}
+.orange-text {
+  color: $orange;
+}
+.chance-red-text {
+  color: $chance-red;
+}
+.shadow-red-text {
+  color: $shadow-red;
+}
+
+.white-text {
+  color: #ffffff;
+}
+
+.chance-gradient {
+  background: linear-gradient(to right, #ff7f00 0%, #e64040 100%);
+}

@@ -18,7 +18,7 @@ class ReportForm extends Component {
         <input
           id={field.input.name}
           className="form-control"
-          type="text"
+          type={field.type || "text"}
           {...field.input}
         />
       </div>
@@ -29,12 +29,7 @@ class ReportForm extends Component {
     return (
       <div className={`form-group ${field.className}`}>
         <label htmlFor={field.input.name}>{field.label}</label>
-        <select
-          id={field.input.name}
-          className="form-control"
-          type="text"
-          {...field.input}
-        >
+        <select id={field.input.name} className="form-control" {...field.input}>
           {field.children}
         </select>
       </div>

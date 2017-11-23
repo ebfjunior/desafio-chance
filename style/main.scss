@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import "variables.scss";
+@import "elements.scss";
 
 * {
   color: $shade-30;
@@ -164,4 +165,62 @@ a.cancel-panel-link {
 
 .report-info-actions {
   margin-bottom: 80px;
+}
+
+//////////////////////////
+
+.user-screen {
+  text-align: center;
+  margin-top: 50px;
+
+  .panel-user-screen {
+    border-radius: 5px;
+    border: 1px solid $shade-94;
+    box-shadow: 0 0 30px $shade-90;
+
+    .header-login-panel {
+      @extend .chance-gradient;
+      padding: 15px;
+    }
+
+    .form-login-panel {
+      padding-top: 30px;
+      text-align: left;
+
+      label {
+        color: $shade-60;
+        font-weight: 100;
+      }
+
+      .login-submit-button {
+        width: 100%;
+        padding: 15px;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2em;
+
+        @extend .chance-gradient;
+      }
+    }
+  }
+}
+
+.login-panel-button:first-child {
+  margin-right: 15px;
+}
+.login-panel-button:last-child {
+  margin-left: 15px;
+}
+
+.login-panel-button.inactive {
+  @extend .white-text;
+}
+
+.login-panel-button.active {
+  @extend .btn, .btn-white, .chance-red-text;
+
+  &:hover {
+    text-decoration: none;
+    @extend .shadow-red-text;
+  }
 }

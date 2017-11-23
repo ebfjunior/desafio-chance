@@ -1,20 +1,21 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CompressionPlugin = require("compression-webpack-plugin");
+var CompressionPlugin = require("compression-webpack-plugin");
 var webpack = require("webpack");
 
 var plugins = [
   new ExtractTextPlugin({
-      filename: 'dist/style.css',
-      allChunks: true,
-    })
+    filename: "dist/style.css",
+    allChunks: true
+  })
 ];
 
-if(process.env.NODE_ENV == 'production'){
+if (process.env.NODE_ENV == "production") {
   plugins = [
     ...plugins,
     new webpack.DefinePlugin({
       // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      'process.env.NODE_ENV': "'production'"
+      "process.env.NODE_ENV": "'production'"
     }),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
@@ -26,7 +27,7 @@ if(process.env.NODE_ENV == 'production'){
         screw_ie8: true
       },
       output: {
-        comments: false,
+        comments: false
       },
       exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
@@ -37,44 +38,49 @@ if(process.env.NODE_ENV == 'production'){
       threshold: 10240,
       minRatio: 0
     })
-  ]
+  ];
 }
 
 module.exports = {
-  entry: [
-    './src/index.js',
-    './style/main.scss'
-  ],
+  entry: ["./src/index.js", "./style/main.scss"],
   output: {
     path: __dirname,
-    publicPath: '/',
-    filename: 'dist/bundle.js'
+    publicPath: "/",
+    filename: "dist/bundle.js"
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['env'],
-            plugins: [require('babel-plugin-transform-object-rest-spread')],
-            presets: ['react', 'es2015', 'stage-1']
+            presets: ["env"],
+            plugins: [require("babel-plugin-transform-object-rest-spread")],
+            presets: ["react", "es2015", "stage-1"]
           }
         }
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+        loader: ExtractTextPlugin.extract(["css-loader", "sass-loader"])
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: "url-loader",
+        options: {
+          limit: 8192
+        }
       }
     ]
   },
   plugins,
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"]
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
+    contentBase: "./"
   }
 };
