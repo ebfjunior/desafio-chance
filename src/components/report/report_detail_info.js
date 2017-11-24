@@ -28,6 +28,7 @@ class ReportDetailInfo extends Component {
   render() {
     const report = this.props.reports[this.props.app.current_report_id] || {};
 
+    const date = new Date(report.createdAt);
     return (
       <div className="col-xs-12 col-md-6 detail-info">
         <div className="row">
@@ -70,7 +71,7 @@ class ReportDetailInfo extends Component {
               <div className="col-xs-12 legend">Created at</div>
             </div>
             <div className="row">
-              <div className="col-xs-12">{report.createdAt}</div>
+              <div className="col-xs-12">{date.toDateString()}</div>
             </div>
           </div>
           <div className="col-xs-12 col-md-6">
@@ -107,8 +108,8 @@ class ReportDetailInfo extends Component {
   }
 }
 
-function mapStateToProps({ reports, app }) {
-  return { reports, app };
+function mapStateToProps({ reports, app, users }) {
+  return { reports, app, users };
 }
 
 function mapDispatchToProps(dispatch) {

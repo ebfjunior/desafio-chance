@@ -38,4 +38,12 @@ export default class User {
 
     return request;
   }
+
+  static getAll() {
+    const url = `${ROOT_WS_URL}/user`;
+
+    const request = axios.get(url);
+
+    return request;
+  }
 }

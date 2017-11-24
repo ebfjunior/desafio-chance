@@ -17,8 +17,9 @@ class ReportListItem extends Component {
   render() {
     const { props } = this;
     const { report } = props;
-    report.user = report.user || {};
-    console.log("step 2");
+
+    const date = new Date(report.createdAt);
+
     return (
       <tr data-id={report.id} onClick={this.onTrClick.bind(this)}>
         <td>
@@ -28,19 +29,21 @@ class ReportListItem extends Component {
         </td>
         <td>{report.title}</td>
         <td>{Category[report.categoryId]}</td>
-        <td>{`${report.user.firstName} ${report.user.lastName}`}</td>
-        <td>{report.createdAt}</td>
+        <td>{`${this.props.users[report.userId].firstName} ${this.props.users[
+          report.userId
+        ].lastName}`}</td>
+        <td>{date.toDateString()}</td>
       </tr>
     );
   }
 }
 
-// function mapStateToProps({ reports }) {
-//   return { reports };
-// }
+function mapStateToProps({ users }) {
+  return { users };
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ openDetailPanel, fetchComments }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(ReportListItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ReportListItem);

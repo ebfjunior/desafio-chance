@@ -93,7 +93,14 @@ class ReportForm extends Component {
           component={this.renderSelectField}
           className="col-xs-12"
         >
-          <option value="HkYd4bl6Z">Nicolas ANDRE</option>
+          {Object.keys(this.props.users).map(idx => {
+            return (
+              <option key={idx} value={idx}>
+                {`${this.props.users[idx].firstName} ${this.props.users[idx]
+                  .lastName}`}
+              </option>
+            );
+          })}
         </Field>
         <button type="submit" className="btn btn-primary pull-right">
           SAVE
@@ -107,13 +114,13 @@ ReportForm = reduxForm({ form: "report", enableReinitialize: true })(
   ReportForm
 );
 
-function mapStateToProps({ reports, app }) {
+function mapStateToProps({ reports, app, users }) {
   const report =
     app.report_panel_type == REPORT_PANEL_EDIT
       ? { ...reports[app.current_report_id] }
       : {};
 
-  return { initialValues: report };
+  return { initialValues: report, users };
 }
 
 export default connect(mapStateToProps)(ReportForm);

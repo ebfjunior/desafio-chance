@@ -74,28 +74,6 @@ export default class Report {
     const reportsURL = `${ROOT_WS_URL}/report`;
     const reportsRequest = axios.get(reportsURL);
 
-    let data;
-
-    reportsRequest.then(function(response) {
-      const reports = response.data;
-      const usersURL = `${ROOT_WS_URL}/user`;
-
-      const usersRequest = axios.get(usersURL);
-
-      const reportsResponse = usersRequest.then(response => {
-        const users = _.mapKeys(response.data, "id");
-
-        return reports.map(report => {
-          report["user"] = users[report.userId];
-          console.log("step 1");
-        });
-      });
-
-      return new Promise((resolve, reject) => {
-        resolve(reportsResponse);
-      });
-    });
-
     return reportsRequest;
   }
 }

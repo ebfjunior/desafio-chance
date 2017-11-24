@@ -3,12 +3,17 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { fetchReports } from "../../actions/report_action";
+import { fetchUsers } from "../../actions/users_action";
 
 import ReportListItem from "./report_list_item";
 
 class ReportList extends Component {
   componentDidMount() {
-    this.props.fetchReports();
+    this.props.fetchUsers(() => {
+      setTimeout(() => {
+        this.props.fetchReports();
+      }, 100);
+    });
   }
   renderReportLines() {
     return Object.keys(this.props.reports).map(id => {
@@ -43,7 +48,7 @@ function mapStateToProps({ reports, user }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchReports }, dispatch);
+  return bindActionCreators({ fetchReports, fetchUsers }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportList);

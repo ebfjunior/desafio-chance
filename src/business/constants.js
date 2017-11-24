@@ -11,6 +11,8 @@ export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
+export const FETCH_USERS = "FETCH_USERS";
+
 export const OPEN_REPORT_PANEL = "OPEN_REPORT_PANEL";
 export const CLOSE_REPORT_PANEL = "CLOSE_REPORT_PANEL";
 export const OPEN_DETAIL_PANEL = "OPEN_DETAIL_PANEL";
