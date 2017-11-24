@@ -9,6 +9,7 @@ export const POST_COMMENT = "POST_COMMENT";
 
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 export const OPEN_REPORT_PANEL = "OPEN_REPORT_PANEL";
 export const CLOSE_REPORT_PANEL = "CLOSE_REPORT_PANEL";

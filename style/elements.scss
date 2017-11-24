@@ -7,6 +7,10 @@
 .btn.btn-primary {
   @extend .blue;
   border-color: $blue;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .btn.btn-chance-red {

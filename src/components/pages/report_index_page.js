@@ -10,13 +10,14 @@ import Overlay from "../report/overlay";
 import Header from "../report/header";
 
 class ReportIndexPage extends Component {
-  componentDidMount() {
+  authenticateUser() {
     setTimeout(() => {
       if (!Object.keys(this.props.user).length)
         this.props.history.push("/login");
     }, 100);
   }
   render() {
+    this.authenticateUser.call(this);
     return (
       <div>
         <div className="container-fluid wrapper index">
@@ -31,11 +32,11 @@ class ReportIndexPage extends Component {
             </div>
             <div className="col-xs-12 col-md-10 no-padding">
               <ReportList />
-              <ReportFormPanel />
               <ReportDetailPanel />
             </div>
           </div>
         </div>
+        <ReportFormPanel />
         <Overlay />
       </div>
     );

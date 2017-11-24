@@ -45,6 +45,7 @@
   z-index: 4;
   width: 50%;
   right: 0;
+  top: 0;
   border-left: 1px solid $shade-90;
   color: $shade-60;
   .panel-header {
@@ -170,6 +171,11 @@ a.cancel-panel-link {
 .header {
   padding: 10px;
   background: #ffffff;
+}
+
+.header-user-name {
+  line-height: 35px;
+  margin-right: 20px;
 }
 
 //////////////////////////
