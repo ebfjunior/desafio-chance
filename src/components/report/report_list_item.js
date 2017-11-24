@@ -16,18 +16,20 @@ class ReportListItem extends Component {
   }
   render() {
     const { props } = this;
-
+    const { report } = props;
+    report.user = report.user || {};
+    console.log("step 2");
     return (
-      <tr data-id={props.report.id} onClick={this.onTrClick.bind(this)}>
+      <tr data-id={report.id} onClick={this.onTrClick.bind(this)}>
         <td>
-          <span className={`badge ${mapBadgeColors[props.report.status]}`}>
-            {Status[props.report.status]}
+          <span className={`badge ${mapBadgeColors[report.status]}`}>
+            {Status[report.status]}
           </span>
         </td>
-        <td>{props.report.title}</td>
-        <td>{Category[props.report.categoryId]}</td>
-        <td>{props.report.userId}</td>
-        <td>{props.report.createdAt}</td>
+        <td>{report.title}</td>
+        <td>{Category[report.categoryId]}</td>
+        <td>{`${report.user.firstName} ${report.user.lastName}`}</td>
+        <td>{report.createdAt}</td>
       </tr>
     );
   }

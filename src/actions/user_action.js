@@ -15,13 +15,10 @@ export function registerUser(values, callback = function() {}) {
 export function loginUser(values, callback = function() {}) {
   const user = new User(values);
   const request = user.login().then(function(response) {
-    console.log(response);
-
     return new Promise((resolve, reject) => {
       axios.interceptors.request.use(function(config) {
         config.headers = config.headers || {};
         config.headers.Authorization = response.data.token;
-        console.log(config);
         return config;
       });
 
