@@ -26,6 +26,3 @@ export const mapBadgeColors = {
   "4": "chance-red",
   "5": "shadow-red"
 };
-
-export const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY29sYXNAY2hhbmNlLmNvIiwiaWF0IjoxNTExMjY3MDA0fQ.5YtcXK_XuLzmWVhAqLuKQg-OcZo4-qEi6MjG_B7bAII";

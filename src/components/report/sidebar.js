@@ -10,13 +10,26 @@ class Sidebar extends Component {
   }
   render() {
     return (
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={this.onButtonClick.bind(this)}
-      >
-        ADD REPORT
-      </button>
+      <div>
+        <div className="row">
+          <ul>
+            <li className="active">All reports</li>
+            <li>My reports</li>
+            <li>Assigned to me</li>
+          </ul>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <button
+              type="button"
+              className="btn btn-primary full-width"
+              onClick={this.onButtonClick.bind(this)}
+            >
+              ADD REPORT
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 }

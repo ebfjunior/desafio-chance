@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ROOT_WS_URL, TOKEN } from "./constants";
+import { ROOT_WS_URL } from "./constants";
 
 export default class Report {
   constructor(values) {
@@ -26,21 +26,13 @@ export default class Report {
     const { title, categoryId, status, description, userId } = this;
 
     const url = `${ROOT_WS_URL}/report`;
-    const request = axios.post(
-      url,
-      {
-        title,
-        status,
-        description,
-        userId,
-        categoryId
-      },
-      {
-        headers: {
-          Authorization: TOKEN
-        }
-      }
-    );
+    const request = axios.post(url, {
+      title,
+      status,
+      description,
+      userId,
+      categoryId
+    });
 
     return request;
   }
@@ -49,22 +41,14 @@ export default class Report {
     const { id, title, categoryId, status, description, userId } = this;
 
     const url = `${ROOT_WS_URL}/report`;
-    const request = axios.put(
-      url,
-      {
-        id,
-        title,
-        status,
-        description,
-        userId,
-        categoryId
-      },
-      {
-        headers: {
-          Authorization: TOKEN
-        }
-      }
-    );
+    const request = axios.put(url, {
+      id,
+      title,
+      status,
+      description,
+      userId,
+      categoryId
+    });
 
     return request;
   }
@@ -73,33 +57,21 @@ export default class Report {
     const { id, title, categoryId, status, description, userId } = this;
 
     const url = `${ROOT_WS_URL}/report/${id}`;
-    const request = axios.delete(url, {
-      headers: {
-        Authorization: TOKEN
-      }
-    });
+    const request = axios.delete(url);
 
     return request;
   }
 
   getComments() {
     const url = `${ROOT_WS_URL}/report/${this.id}/comment`;
-    const request = axios.get(url, {
-      headers: {
-        Authorization: TOKEN
-      }
-    });
+    const request = axios.get(url);
 
     return request;
   }
 
   static getAll() {
     const url = `${ROOT_WS_URL}/report`;
-    const request = axios.get(url, {
-      headers: {
-        Authorization: TOKEN
-      }
-    });
+    const request = axios.get(url);
 
     return request;
   }

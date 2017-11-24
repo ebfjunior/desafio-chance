@@ -7,6 +7,10 @@
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .table {
   background: #ffffff;
   th {
@@ -28,7 +32,7 @@
   padding: 0;
 }
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .wrapper.index {
@@ -38,6 +42,25 @@
 .wrapper.sidebar {
   background: #ffffff;
   border-right: 1px solid $shade-90;
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style: none;
+      padding: 10px 20px;
+
+      &.active {
+        background: $shade-90;
+        cursor: pointer;
+      }
+
+      &:hover:not(.active) {
+        background: $shade-94;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .wrapper.panel {

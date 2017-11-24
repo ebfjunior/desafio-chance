@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ROOT_WS_URL, TOKEN } from "./constants";
+import { ROOT_WS_URL } from "./constants";
 
 export default class Comment {
   constructor(values) {
@@ -16,19 +16,11 @@ export default class Comment {
     const { content, userId, reportId } = this;
 
     const url = `${ROOT_WS_URL}/comment`;
-    const request = axios.post(
-      url,
-      {
-        content,
-        userId,
-        reportId
-      },
-      {
-        headers: {
-          Authorization: TOKEN
-        }
-      }
-    );
+    const request = axios.post(url, {
+      content,
+      userId,
+      reportId
+    });
 
     return request;
   }
