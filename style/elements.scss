@@ -27,6 +27,9 @@
   background: transparent;
   border-width: 2px;
   border-style: solid;
+
+  &.blue-text:hover{color: darken($blue, 10%)}
+  &.chance-red-text:hover{color: darken($chance-red, 10%)}
 }
 
 a.white-text:hover {

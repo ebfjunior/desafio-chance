@@ -18,16 +18,20 @@ class ReportDetailComments extends Component {
     });
   }
   renderComment() {
-    return this.props.comments.map(comment => (
-      <div key={comment.id} className="comment-item">
-        <div className="row">
-          <div className="col-xs-12 comment-content">{comment.content}</div>
-          <div className="col-xs-12 comment-info">
-            {comment.userId} - {comment.createdAt}
+    return this.props.comments.map(comment => {
+      const date = new Date(comment.createdAt);
+      
+      return (
+        <div key={comment.id} className="comment-item">
+          <div className="row">
+            <div className="col-xs-12 comment-content">{comment.content}</div>
+            <div className="col-xs-12 comment-info">
+              {`${this.props.users[comment.userId].firstName} ${this.props.users[comment.userId].lastName}`} - {date.toDateString()}
+            </div>
           </div>
         </div>
-      </div>
-    ));
+      )
+    });
   }
   render() {
     return (
@@ -58,8 +62,8 @@ class ReportDetailComments extends Component {
   }
 }
 
-function mapStateToProps({ reports, comments, app }) {
-  return { reports, comments, app };
+function mapStateToProps({ reports, comments, app, users }) {
+  return { reports, comments, app, users };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -21,6 +21,7 @@ class ReportForm extends Component {
           type={field.type || "text"}
           {...field.input}
         />
+        <span className="form-error"> {field.meta.touched? field.meta.error : ''}</span>
       </div>
     );
   }
@@ -30,12 +31,26 @@ class ReportForm extends Component {
       <div className={`form-group ${field.className}`}>
         <label htmlFor={field.input.name}>{field.label}</label>
         <select id={field.input.name} className="form-control" {...field.input}>
+          <option value="">Choose one...</option>
           {field.children}
         </select>
+        <span className="form-error"> {field.meta.touched? field.meta.error : ''}</span>
       </div>
     );
   }
 
+  renderTextareaField(field) {
+    return (
+      <div className={`form-group ${field.className}`}>
+        <label htmlFor={field.input.name}>{field.label}</label>
+        <textarea id={field.input.name} className="form-control" {...field.input}>
+          {field.children}
+        </textarea>
+        <span className="form-error"> {field.meta.touched? field.meta.error : ''}</span>
+      </div>
+    );
+  }
+  
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -78,14 +93,12 @@ class ReportForm extends Component {
           })}
         </Field>
 
-        <div className="form-group col-xs-12">
-          <label htmlFor="description">Description</label>
           <Field
+            label="Description"
             name="description"
-            component="textarea"
-            className="form-control"
+            component={this.renderTextareaField}
+            className="col-xs-12"
           />
-        </div>
 
         <Field
           label="Assigned to"
@@ -110,7 +123,19 @@ class ReportForm extends Component {
   }
 }
 
-ReportForm = reduxForm({ form: "report", enableReinitialize: true })(
+const validate = function(values){
+    const fields = ["title", "categoryId", "status", "userId", "description"];
+    const errors = {};
+
+    fields.forEach(field => {
+      console.log(!values[field]);
+      if(!values[field]) errors[field] = "Field should be filled";
+    });
+
+    return errors;
+  }
+
+ReportForm = reduxForm({ form: "report", validate, enableReinitialize: true })(
   ReportForm
 );
 

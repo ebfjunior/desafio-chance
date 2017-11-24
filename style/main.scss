@@ -28,6 +28,11 @@
   }
 }
 
+.form-error{
+  @extend .chance-red-text;
+  font-weight: bold;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -144,7 +149,7 @@
         height: auto;
       }
     }
-    
+
   }
 }
 

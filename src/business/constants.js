@@ -23,8 +23,8 @@ export const REPORT_PANEL_EDIT = "REPORT_PANEL_EDIT";
 
 export const mapBadgeColors = {
   "1": "green",
-  "2": "blue",
-  "3": "orange",
+  "2": "orange",
+  "3": "blue",
   "4": "chance-red",
   "5": "shadow-red"
 };

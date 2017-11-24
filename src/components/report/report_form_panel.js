@@ -14,7 +14,6 @@ class ReportFormPanel extends Component {
     this.props.saveReport(report, () => {
       this.props.closeReportPanel();
       this.props.closeDetailPanel();
-      // this.props.history.push("/");
     });
   }
   render() {
@@ -58,4 +57,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportFormPanel);
-// export default withRouter(connect(mapStateToProps)(ReportNewPanel));
