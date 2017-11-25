@@ -13,24 +13,28 @@ export function registerUser(values, callback = function() {}) {
 }
 
 export async function loginUser(values, callback = function() {}) {
-  const user = new User(values);
-  const request = await user.login().then(function(response) {
-    return new Promise((resolve, reject) => {
-      axios.interceptors.request.use(function(config) {
-        config.headers = config.headers || {};
-        config.headers.Authorization = response.data.token;
-        return config;
+  return dispatch => {
+    const user = new User(values);
+    const request = user.login();
+
+    request.then(async function(response) {
+      return new Promise(async (resolve, reject) => {
+        axios.interceptors.request.use(function(config) {
+          config.headers = config.headers || {};
+          config.headers.Authorization = response.data.token;
+          return config;
+        });
+
+        await dispatch({
+          type: LOGIN_USER,
+          payload: request
+        });
+
+        callback();
+        resolve(response);
       });
-
-      callback();
-      resolve(response);
     });
-  });
-
-  return {
-    type: LOGIN_USER,
-    payload: request
-  };
+  }
 }
 
 export function logoutUser(callback = function() {}) {

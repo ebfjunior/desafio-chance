@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import axios from 'axios';
 
 import Sidebar from "../report/sidebar";
 import ReportList from "../report/report_list";
@@ -10,14 +11,28 @@ import Overlay from "../report/overlay";
 import Header from "../report/header";
 
 class ReportIndexPage extends Component {
+  async componentWillMount(){
+    await this.authenticateUser.call(this);
+  }
+  async componentWillReceiveProps(nextProps) {
+    await this.authenticateUser.call(this);
+  }
   authenticateUser() {
-    setTimeout(() => {
-      if (!Object.keys(this.props.user).length)
+      if (!sessionStorage.getItem("current_user")){
         this.props.history.push("/login");
-    }, 100);
+      }else{
+        const currentUser = JSON.parse(sessionStorage.getItem("current_user"));
+        axios.interceptors.request.use(function(config) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = currentUser.token;
+        return config;
+      });
+
+      }
+
   }
   render() {
-    this.authenticateUser.call(this);
+    
     return (
       <div>
         <div className="container-fluid wrapper index">
