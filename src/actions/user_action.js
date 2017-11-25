@@ -24,12 +24,12 @@ export async function loginUser(values, callback = function() {}) {
           config.headers.Authorization = response.data.token;
           return config;
         });
-console.log("step 1.1");
+
         await dispatch({
           type: LOGIN_USER,
           payload: request
         });
-console.log("step 1.2");
+
         callback();
         resolve(response);
       });
