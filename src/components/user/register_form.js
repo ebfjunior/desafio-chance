@@ -15,17 +15,7 @@ class RegisterForm extends Component {
           type={field.type || "text"}
           {...field.input}
         />
-      </div>
-    );
-  }
-
-  renderSelectField(field) {
-    return (
-      <div className={`form-group ${field.className}`}>
-        <label htmlFor={field.input.name}>{field.label}</label>
-        <select id={field.input.name} className="form-control" {...field.input}>
-          {field.children}
-        </select>
+        <span className="form-error"> {field.meta.touched? field.meta.error : ''}</span>
       </div>
     );
   }
@@ -72,4 +62,17 @@ class RegisterForm extends Component {
   }
 }
 
-export default reduxForm({ form: "register" })(RegisterForm);
+
+const validate = function(values){
+  const fields = ["email", "password", "firstName", "lastName"];
+  const errors = {};
+
+  fields.forEach(field => {
+    if(!values[field]) errors[field] = "Field should be filled";
+  });
+
+  return errors;
+}
+
+
+export default reduxForm({ form: "register", validate })(RegisterForm);

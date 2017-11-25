@@ -20,9 +20,6 @@ class ReportList extends Component {
     });
   }
   render() {
-    if (!Object.keys(this.props.reports).length)
-      return <div>Carregando...</div>;
-
     return (
       <table className="table table-hover col-xs-12">
         <thead>
