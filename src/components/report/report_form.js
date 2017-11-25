@@ -128,7 +128,6 @@ const validate = function(values){
     const errors = {};
 
     fields.forEach(field => {
-      console.log(!values[field]);
       if(!values[field]) errors[field] = "Field should be filled";
     });
 

@@ -8,12 +8,9 @@ import { fetchUsers } from "../../actions/users_action";
 import ReportListItem from "./report_list_item";
 
 class ReportList extends Component {
-  componentDidMount() {
-    this.props.fetchUsers(() => {
-      setTimeout(() => {
-        this.props.fetchReports();
-      }, 100);
-    });
+  async componentDidMount() {
+    await this.props.fetchUsers();
+    await this.props.fetchReports();
   }
   renderReportLines() {
     return Object.keys(this.props.reports).map(id => {

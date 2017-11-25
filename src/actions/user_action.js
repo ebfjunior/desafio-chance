@@ -12,9 +12,9 @@ export function registerUser(values, callback = function() {}) {
   };
 }
 
-export function loginUser(values, callback = function() {}) {
+export async function loginUser(values, callback = function() {}) {
   const user = new User(values);
-  const request = user.login().then(function(response) {
+  const request = await user.login().then(function(response) {
     return new Promise((resolve, reject) => {
       axios.interceptors.request.use(function(config) {
         config.headers = config.headers || {};

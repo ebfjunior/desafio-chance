@@ -42,7 +42,7 @@ if (process.env.NODE_ENV == "production") {
 }
 
 module.exports = {
-  entry: ["./src/index.js", "./style/main.scss"],
+  entry: ["babel-polyfill", "./src/index.js", "./style/main.scss"],
   output: {
     path: __dirname,
     publicPath: "/",
@@ -56,7 +56,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            plugins: [require("babel-plugin-transform-object-rest-spread")],
+            plugins: [require("babel-plugin-transform-object-rest-spread"), "transform-async-to-generator"],
             presets: ["react", "env"]
           }
         }
