@@ -95,3 +95,9 @@ $ npm start
 Good luck!**
 
 ---
+
+
+# DELIVERY NOTES
+I have chosen by use my proper boilerplate for initializing my application, which includes tools i usually use (It explain the commits made before two weeks ago).
+
+I must confess i had not realized that i should put my code in `front-end` folder, so i initialized my git repo on a independent folder. 
