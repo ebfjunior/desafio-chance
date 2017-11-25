@@ -46,4 +46,8 @@ export default class User {
 
     return request;
   }
+
+  static getStorage(){
+    return JSON.parse(sessionStorage.getItem("current_user"));
+  }
 }

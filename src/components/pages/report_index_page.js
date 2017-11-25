@@ -10,6 +10,8 @@ import ReportDetailPanel from "../report/report_detail_panel";
 import Overlay from "../report/overlay";
 import Header from "../report/header";
 
+import User from '../../business/user';
+
 class ReportIndexPage extends Component {
   async componentWillMount(){
     await this.authenticateUser.call(this);
@@ -18,17 +20,17 @@ class ReportIndexPage extends Component {
     await this.authenticateUser.call(this);
   }
   authenticateUser() {
-      if (!sessionStorage.getItem("current_user")){
-        this.props.history.push("/login");
-      }else{
-        const currentUser = JSON.parse(sessionStorage.getItem("current_user"));
-        axios.interceptors.request.use(function(config) {
-        config.headers = config.headers || {};
-        config.headers.Authorization = currentUser.token;
-        return config;
-      });
+    const currentUser = User.getStorage();
+    if (!currentUser){
+      this.props.history.push("/login");
+    }else{
+      axios.interceptors.request.use(function(config) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = currentUser.token;
+      return config;
+    });
 
-      }
+    }
 
   }
   render() {

@@ -40,8 +40,8 @@ class ReportList extends Component {
   }
 }
 
-function mapStateToProps({ reports, user }) {
-  return { reports, user };
+function mapStateToProps({ reports }) {
+  return { reports };
 }
 
 function mapDispatchToProps(dispatch) {
