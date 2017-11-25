@@ -34,7 +34,7 @@ class ReportIndexPage extends Component {
 
   }
   render() {
-    
+    console.log('2');
     return (
       <div>
         <div className="container-fluid wrapper index">
